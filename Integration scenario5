@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "c0a3aa64-9af5-4ac2-90f1-984c8bf3ffe3",
+		"name": "Integration scenario5- Restfulbooker API Copy",
+		"description": "Create a booking - Update the same -Delete the same -verify whether it doesnt exist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "40433256",
+		"_collection_link": "https://dark-robot-210322.postman.co/workspace/New-Team-Workspace~f88249ea-0282-4769-88e4-bcac651770bd/collection/40433256-c0a3aa64-9af5-4ac2-90f1-984c8bf3ffe3?action=share&source=collection_link&creator=40433256"
+	},
+	"item": [
+		{
+			"name": "Get all bookings Copy 2",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"var singlebooking = pm.response.json()[6].bookingid;\r",
+							"pm.environment.set(\"bookingid\",singlebooking);\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://restful-booker.herokuapp.com/booking/",
+					"protocol": "https",
+					"host": [
+						"restful-booker",
+						"herokuapp",
+						"com"
+					],
+					"path": [
+						"booking",
+						""
+					]
+				},
+				"description": "Generated from cURL: curl -i https://restful-booker.herokuapp.com/booking"
+			},
+			"response": []
+		},
+		{
+			"name": "Step5 - Get a single booking Copy",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/booking/{{bookingid}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"booking",
+						"{{bookingid}}"
+					]
+				},
+				"description": "Generated from cURL: curl -i https://restful-booker.herokuapp.com/booking/1"
+			},
+			"response": []
+		}
+	]
+}
